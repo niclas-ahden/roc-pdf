@@ -6,10 +6,10 @@ Color :: [].{
 		to_hash : _
 
 		from_index : U64 -> ProfileId
-		from_index = |index| ProfileId.(index)
+		from_index = |idx| ProfileId.(idx)
 
 		index : ProfileId -> U64
-		index = |ProfileId.(index)| index
+		index = |ProfileId.(idx)| idx
 	}
 
 	SpaceId :: U64.{
@@ -17,10 +17,10 @@ Color :: [].{
 		to_hash : _
 
 		from_index : U64 -> SpaceId
-		from_index = |index| SpaceId.(index)
+		from_index = |idx| SpaceId.(idx)
 
 		index : SpaceId -> U64
-		index = |SpaceId.(index)| index
+		index = |SpaceId.(idx)| idx
 	}
 
 	TagSignature :: U32.{
@@ -28,10 +28,10 @@ Color :: [].{
 		to_hash : _
 
 		from_raw : U32 -> TagSignature
-		from_raw = |raw| TagSignature.(raw)
+		from_raw = |signature| TagSignature.(signature)
 
 		raw : TagSignature -> U32
-		raw = |TagSignature.(raw)| raw
+		raw = |TagSignature.(signature)| signature
 	}
 
 	ComponentCount : [One, Three]

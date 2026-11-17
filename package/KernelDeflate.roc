@@ -100,7 +100,7 @@ KernelDeflate :: [].{
 		output_bound : U64,
 	}.{
 		prepare : List(U8), Level, Limits -> Try(Plan, Error)
-		prepare = |input, level, limits| prepare_plan(input, level, limits)
+		prepare = |input, compression_level, limits| prepare_plan(input, compression_level, limits)
 
 		input_bytes : Plan -> U64
 		input_bytes = |plan| plan.input.len()
@@ -108,8 +108,8 @@ KernelDeflate :: [].{
 		level : Plan -> Level
 		level = |plan| plan.level
 
-		output_bound : Plan -> U64
-		output_bound = |plan| plan.output_bound
+		bound : Plan -> U64
+		bound = |plan| plan.output_bound
 	}
 
 	## The checked upper bound of one zlib stream over `input_bytes` bytes at

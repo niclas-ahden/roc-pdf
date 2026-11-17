@@ -165,10 +165,10 @@ Scene :: [].{
 		to_hash : _
 
 		from_index : U64 -> GroupId
-		from_index = |index| GroupId.(index)
+		from_index = |idx| GroupId.(idx)
 
 		index : GroupId -> U64
-		index = |GroupId.(index)| index
+		index = |GroupId.(idx)| idx
 	}
 
 	PathId :: U64.{
@@ -176,10 +176,10 @@ Scene :: [].{
 		to_hash : _
 
 		from_index : U64 -> PathId
-		from_index = |index| PathId.(index)
+		from_index = |idx| PathId.(idx)
 
 		index : PathId -> U64
-		index = |PathId.(index)| index
+		index = |PathId.(idx)| idx
 	}
 
 	FormId :: U64.{
@@ -187,10 +187,10 @@ Scene :: [].{
 		to_hash : _
 
 		from_index : U64 -> FormId
-		from_index = |index| FormId.(index)
+		from_index = |idx| FormId.(idx)
 
 		index : FormId -> U64
-		index = |FormId.(index)| index
+		index = |FormId.(idx)| idx
 	}
 
 	ShadingId :: U64.{
@@ -198,10 +198,10 @@ Scene :: [].{
 		to_hash : _
 
 		from_index : U64 -> ShadingId
-		from_index = |index| ShadingId.(index)
+		from_index = |idx| ShadingId.(idx)
 
 		index : ShadingId -> U64
-		index = |ShadingId.(index)| index
+		index = |ShadingId.(idx)| idx
 	}
 
 	PatternId :: U64.{
@@ -209,10 +209,10 @@ Scene :: [].{
 		to_hash : _
 
 		from_index : U64 -> PatternId
-		from_index = |index| PatternId.(index)
+		from_index = |idx| PatternId.(idx)
 
 		index : PatternId -> U64
-		index = |PatternId.(index)| index
+		index = |PatternId.(idx)| idx
 	}
 
 	Matrix : {

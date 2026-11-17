@@ -17,7 +17,7 @@ KernelFontObjects :: [].{
 
 	Plan :: { base : KernelObjectPlan.Plan, fonts : List(FontObjects), work : Work, xref : KernelObject.ObjectId }.{
 		build : KernelObjectPlan.Plan, U64, U64 -> Try(Plan, Error)
-		build = |base, font_count, max_objects| build_plan(base, font_count, max_objects)
+		build = |object_plan, font_count, max_objects| build_plan(object_plan, font_count, max_objects)
 
 		base : Plan -> KernelObjectPlan.Plan
 		base = |plan| plan.base

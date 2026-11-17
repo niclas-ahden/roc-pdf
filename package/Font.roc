@@ -29,10 +29,10 @@ Font :: [].{
 		to_hash : _
 
 		from_index : U64 -> ResourceId
-		from_index = |index| ResourceId.(index)
+		from_index = |idx| ResourceId.(idx)
 
 		index : ResourceId -> U64
-		index = |ResourceId.(index)| index
+		index = |ResourceId.(idx)| idx
 	}
 
 	FaceId :: U64.{
@@ -40,10 +40,10 @@ Font :: [].{
 		to_hash : _
 
 		from_index : U64 -> FaceId
-		from_index = |index| FaceId.(index)
+		from_index = |idx| FaceId.(idx)
 
 		index : FaceId -> U64
-		index = |FaceId.(index)| index
+		index = |FaceId.(idx)| idx
 	}
 
 	InstanceId :: U64.{
@@ -51,10 +51,10 @@ Font :: [].{
 		to_hash : _
 
 		from_index : U64 -> InstanceId
-		from_index = |index| InstanceId.(index)
+		from_index = |idx| InstanceId.(idx)
 
 		index : InstanceId -> U64
-		index = |InstanceId.(index)| index
+		index = |InstanceId.(idx)| idx
 	}
 
 	PolicyId :: U64.{
@@ -62,10 +62,10 @@ Font :: [].{
 		to_hash : _
 
 		from_index : U64 -> PolicyId
-		from_index = |index| PolicyId.(index)
+		from_index = |idx| PolicyId.(idx)
 
 		index : PolicyId -> U64
-		index = |PolicyId.(index)| index
+		index = |PolicyId.(idx)| idx
 	}
 
 	Script :: Str.{

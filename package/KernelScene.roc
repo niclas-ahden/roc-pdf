@@ -146,7 +146,7 @@ KernelScene :: [].{
 
 	Plan :: { resources : Resources, scenes : Scene.Store, work : Work }.{
 		build : Scene.Store, Resources, Limits -> Try(Plan, Error)
-		build = |scenes, resources, limits| build_plan(scenes, resources, limits)
+		build = |scene_store, scene_resources, limits| build_plan(scene_store, scene_resources, limits)
 
 		resources : Plan -> Resources
 		resources = |plan| plan.resources

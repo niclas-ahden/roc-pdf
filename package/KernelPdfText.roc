@@ -85,7 +85,7 @@ KernelPdfText :: [].{
 		mappings = |plan| plan.mappings
 
 		run : ScenePlan, Text.RunId -> KernelContent.TextRun
-		run = |plan, run| KernelContent.TextPlan.run(plan.content, run.index())
+		run = |plan, run_id| KernelContent.TextPlan.run(plan.content, run_id.index())
 
 		run_count : ScenePlan -> U64
 		run_count = |plan| KernelContent.TextPlan.run_count(plan.content)
@@ -1025,8 +1025,8 @@ list_set = |items, index, value| match items.set(index, value) {
 initial_capacity : U64
 initial_capacity = 1024
 
-content : ScenePlan -> KernelContent.TextPlan
-content = |plan| plan.content
+scene_content : ScenePlan -> KernelContent.TextPlan
+scene_content = |plan| plan.content
 
 # Adjustment rounding is floor(n / d + 1/2) for both signs.
 expect round_half_up(5, 10) == Ok(1) and

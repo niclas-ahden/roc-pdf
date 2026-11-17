@@ -6,10 +6,10 @@ KernelObject :: [].{
 		to_hash : _
 
 		from_index : U64 -> ValueId
-		from_index = |index| ValueId.(index)
+		from_index = |idx| ValueId.(idx)
 
 		index : ValueId -> U64
-		index = |ValueId.(index)| index
+		index = |ValueId.(idx)| idx
 
 	}
 
@@ -18,10 +18,10 @@ KernelObject :: [].{
 		to_hash : _
 
 		from_index : U64 -> NameId
-		from_index = |index| NameId.(index)
+		from_index = |idx| NameId.(idx)
 
 		index : NameId -> U64
-		index = |NameId.(index)| index
+		index = |NameId.(idx)| idx
 
 	}
 
@@ -30,10 +30,10 @@ KernelObject :: [].{
 		to_hash : _
 
 		from_index : U64 -> ByteStringId
-		from_index = |index| ByteStringId.(index)
+		from_index = |idx| ByteStringId.(idx)
 
 		index : ByteStringId -> U64
-		index = |ByteStringId.(index)| index
+		index = |ByteStringId.(idx)| idx
 
 	}
 
@@ -42,10 +42,10 @@ KernelObject :: [].{
 		to_hash : _
 
 		from_index : U64 -> TextStringId
-		from_index = |index| TextStringId.(index)
+		from_index = |idx| TextStringId.(idx)
 
 		index : TextStringId -> U64
-		index = |TextStringId.(index)| index
+		index = |TextStringId.(idx)| idx
 
 	}
 
@@ -54,10 +54,10 @@ KernelObject :: [].{
 		to_hash : _
 
 		from_index : U64 -> PayloadId
-		from_index = |index| PayloadId.(index)
+		from_index = |idx| PayloadId.(idx)
 
 		index : PayloadId -> U64
-		index = |PayloadId.(index)| index
+		index = |PayloadId.(idx)| idx
 
 	}
 
@@ -66,10 +66,10 @@ KernelObject :: [].{
 		to_hash : _
 
 		from_index : U64 -> StreamId
-		from_index = |index| StreamId.(index)
+		from_index = |idx| StreamId.(idx)
 
 		index : StreamId -> U64
-		index = |StreamId.(index)| index
+		index = |StreamId.(idx)| idx
 
 	}
 
@@ -78,11 +78,11 @@ KernelObject :: [].{
 		to_hash : _
 
 		from_number : U64 -> Try(ObjectId, Error)
-		from_number = |number|
-			if (number == 0) Err(ObjectNumberZero) else Ok(ObjectId.(number))
+		from_number = |object_number|
+			if (object_number == 0) Err(ObjectNumberZero) else Ok(ObjectId.(object_number))
 
 		number : ObjectId -> U64
-		number = |ObjectId.(number)| number
+		number = |ObjectId.(object_number)| object_number
 
 	}
 

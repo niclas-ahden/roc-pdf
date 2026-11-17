@@ -96,13 +96,13 @@ KernelEmit :: [].{
 		offsets : List(U64),
 		position : U64,
 	}.{
-		start : U64 -> CountingSink
-		start = |position| CountingSink.{ offsets: [], position }
+		starting_at : U64 -> CountingSink
+		starting_at = |initial_position| CountingSink.{ offsets: [], position: initial_position }
 
 		mark_object : CountingSink -> CountingSink
 		mark_object = |sink| {
-			{ offsets, position } = sink
-			CountingSink.{ offsets: offsets.append(position), position }
+			{ offsets, position: sink_position } = sink
+			CountingSink.{ offsets: offsets.append(sink_position), position: sink_position }
 		}
 
 		position : CountingSink -> U64
@@ -1374,7 +1374,7 @@ expect {
 
 # The counting sink preserves fixed-width offsets beyond four GiB.
 expect {
-	sink = KernelEmit.CountingSink.start(4294967312)
+	sink = KernelEmit.CountingSink.starting_at(4294967312)
 	marked = KernelEmit.CountingSink.mark_object(sink)
 	written = KernelEmit.CountingSink.write(marked, 8192)?
 
@@ -1390,7 +1390,7 @@ expect {
 }
 
 # The counting sink reports overflow before accepting a segment length.
-expect match KernelEmit.CountingSink.write(KernelEmit.CountingSink.start(18446744073709551615), 1) {
+expect match KernelEmit.CountingSink.write(KernelEmit.CountingSink.starting_at(18446744073709551615), 1) {
 	Err(ArithmeticOverflow) => True
 	_ => False
 }

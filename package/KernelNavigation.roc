@@ -181,9 +181,9 @@ KernelNavigation :: [].{
 	## consume these exact facts, rather than validating authored ranges again.
 	LabelPlan :: { pages : U64, ranges : List(LabelRange) }.{
 		build : List(Document.PageLabelRange), U64, Limits -> Try(LabelPlan, Document.NavigationError)
-		build = |inputs, pages, Limits.(limits)| {
-			validated = validate_labels(inputs, { forms: 0, nodes: 0, occurrences: 0, pages, semantic_annotations: 0 }, limits)?
-			Ok(LabelPlan.{ pages, ranges: validated.ranges })
+		build = |inputs, page_count, Limits.(limits)| {
+			validated = validate_labels(inputs, { forms: 0, nodes: 0, occurrences: 0, pages: page_count, semantic_annotations: 0 }, limits)?
+			Ok(LabelPlan.{ pages: page_count, ranges: validated.ranges })
 		}
 
 		ranges : LabelPlan -> List(LabelRange)

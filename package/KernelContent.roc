@@ -98,7 +98,7 @@ KernelContent :: [].{
 		make = |runs| TextPlan.{ runs }
 
 		run : TextPlan, U64 -> TextRun
-		run = |plan, run| list_at(plan.runs, run)
+		run = |plan, run_index| list_at(plan.runs, run_index)
 
 		run_count : TextPlan -> U64
 		run_count = |plan| plan.runs.len()
@@ -130,7 +130,7 @@ KernelContent :: [].{
 		pattern_stream_count = |plan| plan.pattern_streams.len()
 
 		stream : Plan, Semantics.ContentStreamId -> ContentStream
-		stream = |plan, stream| list_at(plan.streams, stream.index())
+		stream = |plan, stream_id| list_at(plan.streams, stream_id.index())
 
 		stream_count : Plan -> U64
 		stream_count = |plan| plan.streams.len()

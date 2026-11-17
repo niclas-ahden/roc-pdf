@@ -3,21 +3,21 @@ KernelLex :: [].{
 
 	Name :: List(U8).{
 		from_bytes : List(U8) -> Try(Name, Error)
-		from_bytes = |bytes| {
-			length = bytes.len()
+		from_bytes = |raw_name| {
+			length = raw_name.len()
 			var $index = 0
 			while $index < length {
-				if byte_at(bytes, $index) == 0 {
+				if byte_at(raw_name, $index) == 0 {
 					return Err(NullNameByte($index))
 				}
 				$index = $index + 1
 			}
 
-			Ok(Name.(bytes))
+			Ok(Name.(raw_name))
 		}
 
 		bytes : Name -> List(U8)
-		bytes = |Name.(bytes)| bytes
+		bytes = |Name.(raw_name)| raw_name
 	}
 
 	Text :: List(U8).{
@@ -25,18 +25,18 @@ KernelLex :: [].{
 		from_str = |value| Text.(Str.to_utf8(value))
 
 		bytes : Text -> List(U8)
-		bytes = |Text.(bytes)| bytes
+		bytes = |Text.(text_bytes)| text_bytes
 	}
 
 	## Decimal is an exact signed coefficient and a base-10 scale. Floating-point
 	## values never enter the lexical boundary.
 	Decimal :: { coefficient : I64, scale : U8 }.{
 		from_coefficient : I64, U8 -> Try(Decimal, Error)
-		from_coefficient = |coefficient, scale|
-			if scale <= 9 {
-				Ok(Decimal.{ coefficient, scale })
+		from_coefficient = |decimal_coefficient, decimal_scale|
+			if decimal_scale <= 9 {
+				Ok(Decimal.{ coefficient: decimal_coefficient, scale: decimal_scale })
 			} else {
-				Err(DecimalScaleOutOfRange(scale))
+				Err(DecimalScaleOutOfRange(decimal_scale))
 			}
 
 		coefficient : Decimal -> I64

@@ -268,7 +268,7 @@ KernelFacadeSemantics :: [].{
 		work : Work,
 	}.{
 		build : Document.NormalizedAuthoring, Limits -> Try(Plan, Error)
-		build = |authoring, limits| build_plan(authoring, limits)
+		build = |normalized_authoring, limits| build_plan(normalized_authoring, limits)
 
 		destinations : Plan -> List(DestinationRecord)
 		destinations = |plan| plan.destinations
